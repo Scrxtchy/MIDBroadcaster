@@ -72,35 +72,7 @@ public class EventSender implements MidiEventListener
 
     public static void main(String[] args)
     {
-        // 1. Read in a MidiFile
-        MidiFile midi = null;
-        try
-        {
-            midi = new MidiFile(new File("inputmid.mid"));
-        }
-        catch(IOException e)
-        {
-            System.err.println(e);
-            return;
-        }
-
-        // 2. Create a MidiProcessor
-        MidiProcessor processor = new MidiProcessor(midi);
-
-        // 3. Register listeners for the events you're interested in
-        EventPrinter ep = new EventPrinter("Individual Listener");
-        processor.registerEventListener(ep, Tempo.class);
-        processor.registerEventListener(ep, NoteOn.class);
-
-        // or listen for all events:
-        EventPrinter ep2 = new EventPrinter("Listener For All");
-        processor.registerEventListener(ep2, MidiEvent.class);
-
-        // 4. Start the processor
-        processor.start();
-
-        // Listeners will be triggered in real time with the MIDI events
-        // And you can pause/resume with stop() and start()
+        
     }
 
     private void noteOff(int channel, int pitch, int velocity) {
