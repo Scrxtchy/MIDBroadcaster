@@ -33,6 +33,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.leff.midi.event.NoteOff;
 import com.leff.midi.examples.EventPrinter;
 import com.leff.midi.examples.EventSender;
 import com.mobileer.miditools.MidiConstants;
@@ -127,6 +128,8 @@ public class MainActivity extends Activity {
 
         ep = new EventSender("MidiEvent", mKeyboardReceiverSelector);
         processor.registerEventListener(ep, NoteOn.class);
+        processor.registerEventListener(ep, NoteOff.class);
+        processor.registerEventListener(ep, Tempo.class);
 
         processor.start();
     }

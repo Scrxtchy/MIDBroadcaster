@@ -91,7 +91,7 @@ public class MidiConstants {
     public static boolean isAllActiveSensing(byte[] msg, int offset,
             int count) {
         // Count bytes that are not active sensing.
-        int goodBytes = 0;
+            int goodBytes = 0;
         for (int i = 0; i < count; i++) {
             byte b = msg[offset + i];
             if (b != MidiConstants.STATUS_ACTIVE_SENSING) {
