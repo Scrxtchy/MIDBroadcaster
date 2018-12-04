@@ -67,6 +67,9 @@ public class MainActivity extends Activity {
 		PLAYING
 	}
 
+	private Spinner channel_spinner;
+	private ListView midList;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -75,12 +78,11 @@ public class MainActivity extends Activity {
 		if (getPackageManager().hasSystemFeature(PackageManager.FEATURE_MIDI)) {
 			setupMidi();
 		} else {
-			Toast.makeText(this, "MIDI not supported!", Toast.LENGTH_LONG)
-					.show();
+			Toast.makeText(this, "MIDI not supported!", Toast.LENGTH_LONG).show();
 		}
 
-		Spinner spinner = findViewById(R.id.spinner_channels);
-		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+		channel_spinner = findViewById(R.id.spinner_channels);
+		channel_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
 				int pos, long id) {
@@ -97,7 +99,7 @@ public class MainActivity extends Activity {
 
 		//Button testButton = (Button) findViewById(R.id.play);
 
-		ListView midList = findViewById(R.id.midSelector);
+		midList = findViewById(R.id.midSelector);
 		//populateMidiList(R.id.midSelector);
 		midList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, populateMidiList()));
 		midList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -119,9 +121,6 @@ public class MainActivity extends Activity {
 				if (ep != null)	ep.setDownmix(b);
 			}
 		});
-
-
-
 
 		eventLog = findViewById(R.id.eventLog);
 	}
@@ -161,7 +160,7 @@ public class MainActivity extends Activity {
 
 	@Override
 	public void onDestroy() {
-		ep.closeSynthResources();
+		if (ep != null) ep.closeSynthResources();
 		super.onDestroy();
 	}
 

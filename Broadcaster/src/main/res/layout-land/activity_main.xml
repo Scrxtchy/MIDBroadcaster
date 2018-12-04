@@ -63,6 +63,7 @@
             android:entries="@array/channels" />
 
         <CheckBox
+            android:id="@+id/downMixChannel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/monoChannel" />
@@ -85,6 +86,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btnPlay" />
+
+        <TextView
+            android:id="@+id/midTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/defaultMidLabel" />
     </LinearLayout>
 
     <ListView

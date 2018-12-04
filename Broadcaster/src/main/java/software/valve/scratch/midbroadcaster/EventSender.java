@@ -55,7 +55,7 @@ public class EventSender implements MidiEventListener {
 			noteOn(midi.getChannel() + baseChannel, midi.getNoteValue(), midi.getVelocity());
 
 		}
-		if (event instanceof NoteOff) {
+		if (event instanceof NoteOff){
 			NoteOff midi = (NoteOff) event;
 			if (downmix) midi.setChannel(1);
 			noteOff(midi.getChannel() + baseChannel, midi.getNoteValue(), midi.getVelocity());

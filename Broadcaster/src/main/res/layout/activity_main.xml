@@ -13,92 +13,117 @@
      limitations under the License.
 -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
+
+    <TextView
+        android:id="@+id/text_receivers"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginRight="11dp"
+        android:text="@string/receivers_text"
+        app:layout_constraintBottom_toBottomOf="@+id/eventLog"
+        app:layout_constraintEnd_toEndOf="@+id/btnReturn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner_receivers"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:entries="@array/receivers"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner_channels"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_channels"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/eventLog"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
+        android:gravity="center"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="@+id/text_channels"
+        app:layout_constraintEnd_toEndOf="@+id/midTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/text_channels"
+        android:layout_width="54dp"
+        android:layout_height="0dp"
+        android:text="@string/channel_text"
+        app:layout_constraintBottom_toBottomOf="@+id/midTitle"
+        app:layout_constraintStart_toStartOf="@+id/midSelector"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner_channels"
+        android:layout_width="118dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:entries="@array/channels"
+        app:layout_constraintBottom_toBottomOf="@+id/downMixChannel"
+        app:layout_constraintStart_toStartOf="@+id/text_channels"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/downMixChannel"
+        android:layout_width="165dp"
+        android:layout_height="32dp"
+        android:text="@string/monoChannel"
+        app:layout_constraintStart_toStartOf="@+id/text_receivers"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/btnReturn"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:text="@string/btnReturnToStart"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner_receivers"
+        app:layout_constraintEnd_toEndOf="@+id/btnPlay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_receivers" />
 
-        <TextView
-            android:id="@+id/text_receivers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/receivers_text" />
-
-        <Spinner
-            android:id="@+id/spinner_receivers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/receivers" />
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:id="@+id/eventLog"
-            android:text=""/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/btnPlay"
+        android:layout_width="88dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
+        android:onClick="playMidi"
+        android:text="@string/btnPlay"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner_receivers"
+        app:layout_constraintStart_toStartOf="@+id/spinner_receivers"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_receivers" />
 
-        <TextView
-            android:id="@+id/text_channels"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/channel_text" />
+    <TextView
+        android:id="@+id/midTitle"
+        android:layout_width="208dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="center"
+        android:text="@string/defaultMidLabel"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner_receivers"
+        app:layout_constraintStart_toStartOf="@+id/text_receivers"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Spinner
-            android:id="@+id/spinner_channels"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/channels" />
-
-        <CheckBox
-            android:id="@+id/downMixChannel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/monoChannel" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btnReturn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btnReturnToStart" />
-
-        <Button
-            android:id="@+id/btnPlay"
-            android:onClick="playMidi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btnPlay" />
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:id="@+id/midTitle"
-            android:text="@string/defaultMidLabel"/>
-
-    </LinearLayout>
 
     <ListView
         android:id="@+id/midSelector"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="0dp"
+        android:layout_height="377dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text_receivers" />
 
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
